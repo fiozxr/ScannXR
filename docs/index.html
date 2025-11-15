@@ -1,0 +1,159 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scannxr — Network Scanner</title>
+  <meta name="description" content="Scannxr — Pro‑grade Python network scanner with ARP discovery, SYN stealth scan, HTML/JSON reporting, and fingerprinting.">  <!-- Modern Clean Theme (Glass + Neon Cyber Look) -->  <style>
+    :root {
+      --bg: #0a0f1c;
+      --fg: #eef6ff;
+      --muted: #8b99b0;
+      --accent: #4ef3ff;
+      --accent2: #8f67ff;
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.06);
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #121b33, #090f1d 60%);
+      color: var(--fg);
+      overflow-x: hidden;
+    }
+    header {
+      padding: 40px 5%;
+      text-align:center;
+      background: linear-gradient(135deg, var(--accent2) 0%, transparent 60%);
+    }
+    header h1 {
+      font-size: 42px;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    header p { max-width: 720px; margin:12px auto; color: var(--muted); font-size: 18px; }
+
+    .container { padding: 40px 5%; max-width: 1100px; margin:auto; }
+
+    .section {
+      margin-top: 40px;
+      padding: 28px;
+      background: var(--card);
+      border-radius: 16px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 24px rgba(0,0,0,0.3);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .section h2 {
+      font-size: 26px;
+      margin-top:0;
+      margin-bottom:16px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .features-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:18px;
+    }
+    .feature-card {
+      background: var(--glass);
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .feature-card strong { color: var(--accent); font-size: 17px; }
+    .feature-card span { color: var(--muted); font-size: 14px; }
+
+    pre {
+      background:#050a18;
+      padding:14px;
+      border-radius:12px;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,0.05);
+      color:#d7faff;
+      line-height:1.4;
+    }
+    code { background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:6px; }
+
+    .btn {
+      display:inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#000b13;
+      padding:10px 16px;
+      font-weight:700;
+      text-decoration:none;
+      border-radius:10px;
+      margin-right:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      text-align:center;
+      color:var(--muted);
+      padding:20px;
+      margin-top:40px;
+      font-size:14px;
+    }
+  </style></head>
+<body><header>
+  <h1>Scannxr</h1>
+  <p>Advanced Python-based network scanner with host discovery, stealth scanning, fingerprinting, reporting, and more.</p>
+  <a class="btn" href="#install">Install</a>
+  <a class="btn" href="#usage">Usage</a>
+</header><div class="container">  <div class="section">
+    <h2>Features</h2>
+    <div class="features-grid">
+      <div class="feature-card"><strong>ARP Discovery</strong><br><span>Ultra-fast LAN host detection.</span></div>
+      <div class="feature-card"><strong>SYN Stealth Scan</strong><br><span>Root-only, low-noise port scan.</span></div>
+      <div class="feature-card"><strong>TCP Connect Scan</strong><br><span>Works without root privileges.</span></div>
+      <div class="feature-card"><strong>Banner Grabbing</strong><br><span>Identify services running on ports.</span></div>
+      <div class="feature-card"><strong>OS Guessing</strong><br><span>Based on TTL and fingerprinting.</span></div>
+      <div class="feature-card"><strong>HTML/JSON Reports</strong><br><span>Export professional scan results.</span></div>
+      <div class="feature-card"><strong>Flask Web UI</strong><br><span>Optional live dashboard.</span></div>
+    </div>
+  </div>  <div id="install" class="section">
+    <h2>Installation</h2>
+    <p>  <a class="btn" href="https://www.github.com/fiozxr/scannxr">GitHub</a>
+</p>
+    <pre>git clone https://github.com/fiozxr/scannxr
+cd scannxr
+pip install -r requirements.txt</pre>
+    Optional:
+    <pre>pip install scapy flask</pre>
+  </div>  <div id="usage" class="section">
+    <h2>Usage Examples</h2><strong>Basic scan:</strong>
+<pre>python3 scannxr.py -n 192.168.1.0/24</pre>
+
+<strong>Custom ports:</strong>
+<pre>python3 scannxr.py -n 192.168.1.0/24 -p 22,80,443,8000-8080</pre>
+
+<strong>Stealth SYN scan (root):</strong>
+<pre>sudo python3 scannxr.py --mode syn -n 192.168.1.0/24</pre>
+
+<strong>Export reports:</strong>
+<pre>python3 scannxr.py -n 192.168.1.0/24 --json out.json --html report.html</pre>
+
+  </div>  <div class="section">
+    <h2>example JSON Output</h2>
+    <pre>{
+  "ip": "192.168.1.10",
+  "mac": "AA:BB:CC:DD:EE:FF",
+  "vendor": "Samsung Electronics",
+  "os": "Linux/Unix",
+  "open_ports": {
+    "22": "OpenSSH",
+    "80": "Apache"
+  }
+}</pre>
+  </div></div>
+  <footer>
+  <a class="btn" href="https://www.github.com/fiozxr/scannxr">GitHub</a>
+</footer>
+  </body>
+</html>
