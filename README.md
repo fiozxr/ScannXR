@@ -1,7 +1,5 @@
-
-# ScannXR
-# idk of it's working ?!
-Scannxr — Advanced Python Network Scanner
+# IDK IF IT'S WORKING ?!
+# ScannXR — Advanced Python Network Scanner
 
 Scannxr is a powerful, modular, and high‑performance local network discovery & port‑scanning toolkit, designed for both beginners and cybersecurity professionals. It supports ARP discovery, SYN stealth scans, TCP connect scans, banner grabbing, MAC vendor lookup, OS fingerprinting, multi-threaded scanning, and HTML/JSON export.
 
